@@ -1,1 +1,97 @@
+/* css/style.css */
+:root {
+  --gap: 1rem;
+  --border-radius: 12px;
+  --bg-color: #fafafa;
+  --accent-color: #007acc;
+  --text-color: #333;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
 
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 200px);
+  gap: var(--gap);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bento-item {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.bento-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px var(--shadow);
+}
+
+/* Grid item sizes */
+.big {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.wide {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 150px);
+  }
+  .wide {
+    grid-column: span 3;
+  }
+  .big {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .bento-item {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 150px;
+  }
+}
